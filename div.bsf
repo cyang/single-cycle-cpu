@@ -1,0 +1,85 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+*/
+(header "symbol" (version "1.2"))
+(symbol
+	(rect 64 64 160 192)
+	(text "div" (rect 5 0 21 14)(font "Arial" (font_size 8)))
+	(text "inst" (rect 8 112 25 124)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "Si" (rect 0 0 10 14)(font "Arial" (font_size 8)))
+		(text "Si" (rect 21 27 31 41)(font "Arial" (font_size 8)))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 48 0)
+		(input)
+		(text "M" (rect 0 0 9 14)(font "Arial" (font_size 8)))
+		(text "M" (rect 40 25 54 34)(font "Arial" (font_size 8))(vertical))
+		(line (pt 48 0)(pt 48 16))
+	)
+	(port
+		(pt 96 64)
+		(input)
+		(text "Bi" (rect 0 0 10 14)(font "Arial" (font_size 8)))
+		(text "Bi" (rect 61 56 71 70)(font "Arial" (font_size 8)))
+		(line (pt 80 64)(pt 96 64))
+	)
+	(port
+		(pt 0 80)
+		(input)
+		(text "OKi" (rect 0 0 20 14)(font "Arial" (font_size 8)))
+		(text "OKi" (rect 21 75 41 89)(font "Arial" (font_size 8)))
+		(line (pt 0 80)(pt 16 80))
+	)
+	(port
+		(pt 64 128)
+		(output)
+		(text "So" (rect 0 0 15 14)(font "Arial" (font_size 8)))
+		(text "So" (rect 56 88 70 103)(font "Arial" (font_size 8))(vertical))
+		(line (pt 64 112)(pt 64 128))
+	)
+	(port
+		(pt 0 64)
+		(output)
+		(text "Bo" (rect 0 0 15 14)(font "Arial" (font_size 8)))
+		(text "Bo" (rect 24 56 39 70)(font "Arial" (font_size 8)))
+		(line (pt 16 64)(pt 0 64))
+	)
+	(port
+		(pt 96 80)
+		(output)
+		(text "OKo" (rect 0 0 24 14)(font "Arial" (font_size 8)))
+		(text "OKo" (rect 51 75 75 89)(font "Arial" (font_size 8)))
+		(line (pt 96 80)(pt 80 80))
+	)
+	(port
+		(pt 40 128)
+		(output)
+		(text "D" (rect 0 0 8 14)(font "Arial" (font_size 8)))
+		(text "D" (rect 32 95 46 103)(font "Arial" (font_size 8))(vertical))
+		(line (pt 40 112)(pt 40 128))
+	)
+	(drawing
+		(rectangle (rect 16 16 80 112))
+	)
+)

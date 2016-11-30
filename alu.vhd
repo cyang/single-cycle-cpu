@@ -13,21 +13,31 @@ ENTITY alu IS
 END alu;
 
 ARCHITECTURE arch OF alu IS
-	SIGNAL add_result, sub_result : STD_LOGIC_VECTOR(31 DOWNTO 0);
-	SIGNAL cout_add, cout_sub, overflow_add, overflow_sub : STD_LOGIC;
-	COMPONENT rca_nbit IS
+	SIGNAL mult_result : STD_LOGIC_VECTOR(31 DOWNTO 0);
+	SIGNAL div_result : STD_LOGIC_VECTOR(3 DOWNTO 0);
+	COMPONENT array_mult_nbit IS
 		generic (N : integer := 8);
-		port(a, b : in std_logic_vector(N-1 downto 0);
-			cin, sub : in std_logic;
-			cout, overflow : out std_logic;
-			sum : out std_logic_vector(N-1 downto 0)
+		PORT(
+			a: IN STD_LOGIC_VECTOR(N-1 DOWNTO 0);
+			b: IN STD_LOGIC_VECTOR(N-1 DOWNTO 0);
+			
+			p: OUT STD_LOGIC_VECTOR(2*N-1 DOWNTO 0)
+	);
+	END COMPONENT;
+	
+	COMPONENT divider IS 
+		PORT
+		(
+			dividend :  IN  STD_LOGIC_VECTOR(3 DOWNTO 0);
+			divisor :  IN  STD_LOGIC_VECTOR(3 DOWNTO 0);
+			quotient :  OUT  STD_LOGIC_VECTOR(3 DOWNTO 0)
 		);
 	END COMPONENT;
 	
 BEGIN
-	--rca1: rca_nbit generic MAP(32) PORT MAP(a, b, '0', '0', cout_add, overflow_add, add_result);
-	--rca2: rca_nbit GENERIC MAP(32) PORT MAP(a, b, '1', '1', cout_sub, overflow_sub, sub_result); 
-
+	m1 : array_mult_nbit GENERIC MAP (16) PORT MAP (a(15 DOWNTO 0), b(15 DOWNTO 0), mult_result);
+	d1 : divider PORT MAP (a(3 DOWNTO 0), b(3 DOWNTO 0), div_result);
+	
 
 	PROCESS(ctr)
 	BEGIN
@@ -44,6 +54,11 @@ BEGIN
 			q <= a AND b;
 		ELSIF (ctr = "0001") THEN
 			q <= a OR b;
+		ELSIF (ctr = "1000") THEN
+			q <= mult_result;
+		ELSIF (ctr = "1001") THEN
+			q(31 DOWNTO 4) <= (others => '0');
+			q(3 DOWNTO 0) <= div_result;
 		END IF;
 	END PROCESS;
 END arch;

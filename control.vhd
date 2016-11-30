@@ -17,7 +17,7 @@ BEGIN
 	BEGIN
 		
 		IF (op = "000000") THEN
-			-- addU/subU
+			-- addU/subU/multU/divU
 			regDst <= '1';
 			ALUSrc <= '0';
 			

@@ -16,13 +16,19 @@ BEGIN
 	PROCESS(ALUOp)
 	BEGIN
 		IF (ALUOp = "10") THEN
-			-- addU/subU
+			-- addU/subU/multU/divU
 			IF (funct = "100000") THEN
 				-- addU
 				ALUCtr <= "0010";
 			ELSIF (funct = "100010") THEN
 				-- subU
 				ALUCtr <= "0110";
+			ELSIF (funct = "100100") THEN
+				-- multU
+				ALUCtr <= "1000";
+			ELSIF (funct <= "100110") THEN
+				-- divU
+				ALUCtr <= "1001";
 			END IF;
 		ELSIF (ALUOp = "00") THEN
 			-- lw/sw
